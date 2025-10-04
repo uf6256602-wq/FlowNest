@@ -34,63 +34,77 @@ function Employee({ isLoggedIn, user }) {
   }
 
   return (
-    <div className="employee">
-      <nav className="navbar">
-        <div className="nav-left">
-          <h2 className="logo">FlowNest</h2>
-        </div>
-        <div className="nav-right">
-          <Link to="/home" className="btn home-btn">Home</Link>
-          <Link to="/about" className="btn about-btn">About</Link>
-          <Link to="/contact" className="btn contact-btn">Contact</Link>
-          <Link to="/admin" className="btn admin-btn">Admin</Link>
-          <button onClick={() => { localStorage.removeItem("token"); window.location.reload(); }} className="btn logout-btn">Logout</button>
-        </div>
-      </nav>
+    <>
+      <div className="employee">
+        <nav className="navbar">
+          <div className="nav-left">
+            <h2 className="logo">FlowNest</h2>
+          </div>
+          <div className="nav-right">
+            <Link to="/home" className="btn home-btn">Home</Link>
+            <Link to="/about" className="btn about-btn">About</Link>
+            <Link to="/contact" className="btn contact-btn">Contact</Link>
+            <Link to="/admin" className="btn admin-btn">Admin</Link>
+            <button onClick={() => { localStorage.removeItem("token"); window.location.reload(); }} className="btn logout-btn">Logout</button>
+          </div>
+        </nav>
 
-      <div className="employee-content">
-        <h1>Employee Dashboard</h1>
-        <p>Welcome, {user?.name || "Employee"}!</p>
-        {profile ? (
-          <div className="profile-section">
-            <h2>Your Profile</h2>
-            <div className="profile-info">
-              <div className="profile-item">
-                <strong>Name</strong>
-                {profile.name}
-              </div>
-              <div className="profile-item">
-                <strong>Email</strong>
-                {profile.email}
-              </div>
-              <div className="profile-item">
-                <strong>Role</strong>
-                {profile.role || "Employee"}
+        <div className="employee-content">
+          <h1>Employee Dashboard</h1>
+          <p>Welcome, {user?.name || "Employee"}!</p>
+          {profile ? (
+            <div className="profile-section">
+              <h2>Your Profile</h2>
+              <div className="profile-info">
+                <div className="profile-item">
+                  <strong>Name</strong>
+                  {profile.name}
+                </div>
+                <div className="profile-item">
+                  <strong>Email</strong>
+                  {profile.email}
+                </div>
+                <div className="profile-item">
+                  <strong>Role</strong>
+                  {profile.role || "Employee"}
+                </div>
               </div>
             </div>
-          </div>
-        ) : (
-          <div className="profile-section">
-            <h2>Your Profile</h2>
-            <p>Loading profile...</p>
-          </div>
-        )}
-        <div className="tasks-section">
-          <h2>Your Tasks</h2>
-          <div className="tasks-list">
-            <div className="task-item">
-              Complete onboarding form
+          ) : (
+            <div className="profile-section">
+              <h2>Your Profile</h2>
+              <p>Loading profile...</p>
             </div>
-            <div className="task-item">
-              Submit expense report
-            </div>
-            <div className="task-item">
-              Attend team meeting
+          )}
+          <div className="tasks-section">
+            <h2>Your Tasks</h2>
+            <div className="tasks-list">
+              <div className="task-item">
+                Complete onboarding form
+              </div>
+              <div className="task-item">
+                Submit expense report
+              </div>
+              <div className="task-item">
+                Attend team meeting
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <p>&copy; 2023 FlowNest. All rights reserved. | Empowering HR Excellence</p>
+          <div className="footer-links">
+            <Link to="/about">About Us</Link>
+            <Link to="/contact">Contact</Link>
+            <Link to="/privacy">Privacy Policy</Link>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }
 
